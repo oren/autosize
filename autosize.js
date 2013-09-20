@@ -3,18 +3,21 @@
 	Automatically adjust textarea height based on user input.
 	(c) 2013 Jack Moore - http://www.jacklmoore.com/autosize
 	license: http://www.opensource.org/licenses/mit-license.php
+
+	This is a CommonJSified version of Autosize -
+	Require this file and pass your jQuery object into it.
+	Now you can call .autosize() on any textarea.
+
+	Usage
+	var $ = require('jquery');
+	var autosize = require('autosize');
+
+	autosize($);
+	$('textarea').autosize();
+
 */
-(function (factory) {
-	if (typeof define === 'function' && define.amd) {
-		// AMD. Register as an anonymous module.
-		define(['jquery'], factory);
-	} else {
-		// Browser globals: jQuery or jQuery-like library, such as Zepto
-		factory(window.jQuery || window.$);
-	}
-}(function ($) {
-	var
-	defaults = {
+module.exports = function ($) {
+	var defaults = {
 		className: 'autosizejs',
 		append: '',
 		callback: false,
@@ -255,4 +258,4 @@
 			adjust();
 		});
 	};
-}));
+};
